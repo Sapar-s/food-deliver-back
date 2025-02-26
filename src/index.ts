@@ -47,7 +47,9 @@ app.post("/students", async (req, res) => {
 app.get("/students", async (req, res) => {
   try {
     const users = await getStudent();
-    res.status(201).json({ message: "success", users: users });
+    res
+      .status(201)
+      .json({ message: "success", students: users?.length, users: users });
   } catch (error) {
     res.status(500).json({ message: "error", error });
   }

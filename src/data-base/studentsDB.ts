@@ -32,7 +32,11 @@ export async function getStudent() {
     await client.connect();
     const database = await client.db("school");
     const collection = database.collection("students");
-    const users = await collection.find().toArray();
+    const users = await collection
+      .find({
+        $or: [{ gpa: { $gt: 3 } }, { gap: { $lt: 4 } }],
+      })
+      .toArray();
     return users;
   } catch (error) {
     console.log("Error", error);
