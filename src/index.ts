@@ -3,6 +3,12 @@ import bodyParser from "body-parser";
 import { getMovies } from "./data-base/mongodb";
 import { createFood } from "./data-base/foodDB";
 import { createStudent, getStudent } from "./data-base/studentsDB";
+import { configDotenv } from "dotenv";
+import { connectMongoDB } from "./data-base/db";
+import categoryRoute from "./routes/food-category.route";
+
+configDotenv();
+connectMongoDB();
 
 const app = express();
 app.use(bodyParser.json());
@@ -12,6 +18,8 @@ const port = 5000;
 app.get("/", (req, res) => {
   res.send("helloo woorld");
 });
+
+app.use("/food-category", categoryRoute);
 
 app.get("/movies", async (req, res) => {
   try {
