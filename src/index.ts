@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { configDotenv } from "dotenv";
 import { connectMongoDB } from "./data-base/foodCategoryDB";
 import categoryRoute from "./routes/food-category.route";
+import foodRoute from "./routes/food.route";
 
 configDotenv();
 connectMongoDB();
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/food-category", categoryRoute);
+app.use("/food", foodRoute);
 
 app.listen(port, () => {
   console.log(`server is running on ${port}`);
