@@ -15,11 +15,11 @@ export const createFoodCategory = async (req: Request, res: Response) => {
 
 export const getAllFoodCategory = async (req: Request, res: Response) => {
   try {
-    const getCategory = await foodCategoryModel.find();
+    const categories_data = await foodCategoryModel.find();
     res.status(200).json({
       message: "All categories",
       length: foodCategoryModel.length,
-      getCategory,
+      categories_data,
     });
   } catch (error) {
     res.status(500).json({ message: "Error  createFoodCategory", error });

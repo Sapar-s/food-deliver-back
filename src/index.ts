@@ -1,15 +1,17 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { configDotenv } from "dotenv";
-import { connectMongoDB } from "./data-base/foodCategoryDB";
+import { connectMongoDB } from "./data-base/DB";
 import categoryRoute from "./routes/food-category.route";
 import foodRoute from "./routes/food.route";
+import cors from "cors";
 
 configDotenv();
 connectMongoDB();
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 const port = 5000;
 
