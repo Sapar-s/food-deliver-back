@@ -3,6 +3,7 @@ import {
   createFood,
   deleteFood,
   getFood,
+  getFoods,
   updateFood,
 } from "../controllers/food.controller";
 
@@ -12,6 +13,7 @@ route
   .post("/", createFood)
   .get("/:foodId", getFood)
   .put("/:foodId", updateFood)
-  .delete("/:foodId", deleteFood);
+  .delete("/:foodId", deleteFood)
+  .get("/", getFoods);
 
 export default route;
