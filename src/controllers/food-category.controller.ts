@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import foodCategoryModel from "../models/food-category.model";
+import foodModel from "../models/food.model";
 
 export const createFoodCategory = async (req: Request, res: Response) => {
   try {
@@ -49,6 +50,17 @@ export const deleteFoodCategory = async (req: Request, res: Response) => {
   const { foodCategoryId } = req.params;
   const deleteReq = req.body;
   try {
+    const foundedFoods = await foodModel.find({
+      category: foodCategoryId,
+    });
+
+    console.log("founded foods", foundedFoods);
+    if (foundedFoods.length > 0) {
+      console.log("Category dotor food bainaaa !!! ");
+      res.status(500).json({ message: "Category dotor food bainaaa !!! " });
+      return;
+    }
+
     const deleteCategory = await foodCategoryModel.deleteOne(
       { _id: foodCategoryId },
       deleteReq
