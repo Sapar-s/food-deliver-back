@@ -14,7 +14,7 @@ const UserShema: Schema = new Schema(
     password: { type: String, required: true },
     phoneNumber: { type: String, default: "" },
     address: { type: String, default: "" },
-    role: ["USER", "ADMIN"],
+    role: { type: ["USER", "ADMIN"], default: "USER" },
     orderedFoods: { type: [Schema.ObjectId], ref: "FoodsOrder" },
   },
   {
