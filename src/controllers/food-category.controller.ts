@@ -54,9 +54,7 @@ export const deleteFoodCategory = async (req: Request, res: Response) => {
       category: foodCategoryId,
     });
 
-    console.log("founded foods", foundedFoods);
     if (foundedFoods.length > 0) {
-      console.log("Category dotor food bainaaa !!! ");
       res.status(500).json({ message: "Category dotor food bainaaa !!! " });
       return;
     }
