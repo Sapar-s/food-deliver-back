@@ -19,7 +19,7 @@ export const getAllFoodCategory = async (req: Request, res: Response) => {
     const categories_data = await foodCategoryModel.find();
     res.status(200).json({
       message: "All categories",
-      length: foodCategoryModel.length,
+      length: categories_data.length,
       categories_data,
     });
   } catch (error) {
