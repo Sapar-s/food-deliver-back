@@ -5,6 +5,7 @@ import { connectMongoDB } from "./data-base/DB";
 import categoryRoute from "./routes/food-category.route";
 import foodRoute from "./routes/food.route";
 import authRoute from "./routes/authentication.route";
+import foodOrderRoute from "./routes/food-order.route";
 import cors from "cors";
 
 configDotenv();
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 app.use("/food-category", categoryRoute);
 app.use("/food", foodRoute);
 app.use("/auth", authRoute);
+app.use("/food-order", foodOrderRoute);
 
 app.listen(port, () => {
   console.log(`server is running on ${port}`);

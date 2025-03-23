@@ -1,5 +1,15 @@
-import express, { Router } from "express";
+import express from "express";
+import {
+  createFoodOrder,
+  getFoodOrder,
+  updateFoodOrder,
+} from "../controllers/food-order.controller";
 
-const route = Router();
+const route = express.Router();
 
-route.post("/");
+route
+  .post("/", createFoodOrder)
+  .get("/", getFoodOrder)
+  .put("/", updateFoodOrder);
+
+export default route;
